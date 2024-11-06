@@ -19,3 +19,23 @@
  -HTTPs
  -Tree Shaking -remove unsed code
  -Different  Dev and production bundles
+
+ #Namaste React
+
+ /*
+* -Header
+    -Logo
+    -Nav Items
+* -Body
+    -Search
+    -Restaurant container
+        -restaurant card
+            -image
+            -Name of res,start,cuisine,delivery time
+* -Footer
+    -copy right
+    -links
+    -address
+    -contact
+
+*/
