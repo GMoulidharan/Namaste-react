@@ -5,45 +5,16 @@ import { useState } from "react";
 const Body = () =>{
 
     //Local State variable - Super powerful variable-For this we use Hook which is known as use state.  
-    const [listOfRestaurantSV] = useState([]);
+    const [listOfRestaurant, setListOfRestaurant] = useState(resList);
 
-
-    //Normal JS variable
-    let listOfRestaurant = [
-      {
-        data: {
-          id: "73011",
-          name: "KFC",   
-          cloudinaryImageId: "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/5/932a324d-81d2-49c3-9202-720301692995_96819.JPG",
-          cuisines: ["American", "Snacks", "Biryani"],
-          costForTwo: 30000,
-          deliveryTime: 31,
-          avgRating: "4.5",          
-        },        
-      },
-      {
-        data: {
-          id: "73012",
-          name: "Dominos",   
-          cloudinaryImageId: "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/5/932a324d-81d2-49c3-9202-720301692995_96819.JPG",
-          cuisines: ["American", "Snacks", "Biryani"],
-          costForTwo: 30000,
-          deliveryTime: 31,
-          avgRating: "3.8",          
-        },        
-      },
-      {
-        data: {
-          id: "73013",
-          name: "Mc D",   
-          cloudinaryImageId: "RX_THUMBNAIL/IMAGES/VENDOR/2024/11/5/932a324d-81d2-49c3-9202-720301692995_96819.JPG",
-          cuisines: ["American", "Snacks", "Biryani"],
-          costForTwo: 30000,
-          deliveryTime: 31,
-          avgRating: "4.1",          
-        },        
-      }
-    ];
+    /*
+    Array destructuring.
+    
+    const arr  = useState(resList);
+    //const [listOfRestaurant, setListOfRestaurant] =arr
+    const listOfRestaurant = arr[0];
+    const listOfRestaurant = arr[1]; 
+    */ 
 
     return(<div className='body'>   
         {/* <div className='search'>
@@ -51,9 +22,9 @@ const Body = () =>{
         </div> */}
         <div className="filter">
                 <button className='filter-btn' onClick={()=>{
-                    //Filter  logic here
-                    listOfRestaurant = listOfRestaurant.filter((res) => res.data.avgRating > 4);
-                    console.log(listOfRestaurant);
+                    //Filter  logic here                    
+                    const filteredList = listOfRestaurant.filter((res) => res.data.avgRating > 4);
+                    setListOfRestaurant(filteredList);
                 }}>
                     Top Rated restaurant
                 </button>

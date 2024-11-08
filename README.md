@@ -51,3 +51,9 @@ import component from "path";
 
 export const Compoment
 import {Component} from "path"
+
+# React Hooks
+-Normal JS utility function 
+-2 important Hooks
+    -1. useState() - super powerful state variable in react
+    -2. useEffects()
