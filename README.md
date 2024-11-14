@@ -57,3 +57,7 @@ import {Component} from "path"
 -2 important Hooks
     -1. useState() - super powerful state variable in react
     -2. useEffects()
+
+# 2 types Routing in web apps
+    -Client side Routing
+    -Server side Routing
