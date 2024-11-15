@@ -1,6 +1,7 @@
 import RestaurantCard from './RestaurantCard';
 import { useState, useEffect } from "react";
 import Shimmer from './Shimmer';
+import { Link } from 'react-router-dom';
 const Body = () =>{
 
     //Local State variable - Super powerful variable-For this we use Hook which is known as use state.  
@@ -62,7 +63,12 @@ const Body = () =>{
         <div className='restaurant-container'>
             {
                filteredRestaurant.map((restaurant) =>(
-                <RestaurantCard key={restaurant.info.id} resData= {restaurant}/>//Function returing a JSX
+                //key should be on the parent JSX that is being maped 
+                <Link 
+                key={restaurant.info.id} 
+                to={"/restaurants/"+restaurant.info.id}>
+                    <RestaurantCard  resData= {restaurant}/>
+                </Link>//Function returing a JSX
                ))  
             }
                    
