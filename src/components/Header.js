@@ -1,38 +1,51 @@
-import {LOGO_URL} from '../utils/constants';
+import { LOGO_URL } from '../utils/constants';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = () =>{
+const Logo = () => {
+    <img
+        src={LOGO_URL}
+        alt="logo"
+    ></img>
+}
 
-    // let btnName = "login";
+const Header = () => {
 
     const [btnNameReact, setBtnNameReact] = useState("Login");
-    //console.log("header render");
-     
+
     return (
         <div className="header">
             <div className="logo-container">
                 <img className='logo' src={LOGO_URL}></img>
             </div>
-            <div className="nav-items">
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">About Us</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact">Contact Us</Link>
-                    </li>
-                    <li>Cart</li>
-                    <button onClick={()=>{
-                       btnNameReact === "Login" 
-                       ?setBtnNameReact("Logout")
-                       : setBtnNameReact("Login");
-                    }} className="login-btn">{btnNameReact}</button>
-                </ul>
-            </div>
+            <h2>Cut & Craft</h2>
+            <ul>
+                <Link
+                    to="/"
+                    className="link"
+                >
+                    <li>Home</li>
+                </Link>
+                <Link
+                    to="/about"
+                    className="link"
+                >
+                    <li>About</li>
+                </Link>
+                <Link
+                    to="/contact"
+                    className="link"
+                >
+                    <li>Contact</li>
+                </Link>
+                <li>Cart</li>
+                <button onClick={() => {
+                    btnNameReact === "Login"
+                        ? setBtnNameReact("Logout")
+                        : setBtnNameReact("Login");
+                }} className="login-btn">{btnNameReact}</button>
+            </ul>
+
         </div>
     );
 };
