@@ -1,9 +1,9 @@
 import RestaurantCard from './RestaurantCard';
 import { useState, useEffect } from "react";
 import Shimmer from './Shimmer';
-import { Link } from 'react-router-dom';
-const Body = () =>{
+import { SWIGGY_API } from '../utils/constants';
 
+const Body = () =>{
     //Local State variable - Super powerful variable-For this we use Hook which is known as use state.  
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
     const [filteredRestaurant,setFilteredRestaurant] = useState([]);
@@ -19,62 +19,71 @@ const Body = () =>{
     },[]);
     
     const fetchData =async () =>{
-        const data =await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-        );
+        const data =await fetch(SWIGGY_API);
 
         const json = await data.json();
         //Optional chaining
         setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        );
     }
 
     //conditional rendering
     
     
-    return listOfRestaurant.length === 0 ?<Shimmer />:(
-    <div className='body'>   
-          
-        <div className="filter">
-            <div className='search'>
-                <input type='text' className='search-box' value={searchText}
+    return listOfRestaurant.length === 0 ?(<Shimmer />):(
+    <>             
+        <div className="filter">            
+            <input 
+                type='text'                  name='search-box' 
+                className="search-box"
+                value={searchText}
                 onChange={(event) =>{
                     setSearchText(event.target.value)
-                }}/>
-                <button onClick={() =>{
-                    //Filter the restaurant cards and update the UI
-                    //searchText
-                    console.log(searchText);
+                }}
+            />
+            <button 
+                id="search-btn"
+                onClick={() =>{
+                console.log(searchText);
+                const filteredRestaurant = listOfRestaurant.filter((res) =>{
+                    return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+                });
 
-                    const filteredRestaurant = listOfRestaurant.filter((res) => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                setFilteredRestaurant(filteredRestaurant);
 
-                    setFilteredRestaurant(filteredRestaurant);
-
-                }}>search</button>
-            </div>
-                <button className='filter-btn' onClick={()=>{
+                }}
+                >
+                    Search
+                </button>
+            
+                <button 
+                    className='filter-btn' 
+                    onClick={()=>{
                     //Filter  logic here                    
-                    const filteredList = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
+                    let filteredList = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
                     setListOfRestaurant(filteredList);
-                }}>
+                    }}
+                >
                     Top Rated restaurant
                 </button>
         </div>
         <div className='restaurant-container'>
             {
-               filteredRestaurant.map((restaurant) =>(
-                //key should be on the parent JSX that is being maped 
-                <Link 
-                key={restaurant.info.id} 
-                to={"/restaurants/"+restaurant.info.id}>
-                    <RestaurantCard  resData= {restaurant}/>
-                </Link>//Function returing a JSX
-               ))  
+               filteredRestaurant.map((restaurant) =>{
+                console.log(restaurant);
+                return(
+                    <RestaurantCard 
+                        {...restaurant.info}
+                        key={restaurant.info.id}
+                    />
+                );
+               })  
             }
                    
         </div>
-    </div>
-    )
+    </>
+    );
 };
 
 export default Body;

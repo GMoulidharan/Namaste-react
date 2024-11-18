@@ -2,16 +2,9 @@ import { LOGO_URL } from '../utils/constants';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Logo = () => {
-    <img
-        src={LOGO_URL}
-        alt="logo"
-    ></img>
-}
-
 const Header = () => {
 
-    const [btnNameReact, setBtnNameReact] = useState("Login");
+    const [loginBtn, setLoginBtn] = useState("Login");
 
     return (
         <div className="header">
@@ -40,10 +33,10 @@ const Header = () => {
                 </Link>
                 <li>Cart</li>
                 <button onClick={() => {
-                    btnNameReact === "Login"
-                        ? setBtnNameReact("Logout")
-                        : setBtnNameReact("Login");
-                }} className="login-btn">{btnNameReact}</button>
+                    loginBtn === "Login"
+                        ? setLoginBtn("Logout")
+                        : setLoginBtn("Login");
+                }} className="login-btn">{loginBtn}</button>
             </ul>
 
         </div>

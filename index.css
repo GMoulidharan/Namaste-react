@@ -59,49 +59,181 @@
 }
 
 
-.search{
-    padding: 10px;
-}
-.res-card{   
-    width: 250px;
-    padding: 10px;
-    margin: 5px ;
+/* Search */
+
+.filter{
+    display: flex;
 }
 
+.search-box {
+    margin: 10px 10px 10px 50px;
+    padding: 10px;
+    border: none;
+}
+
+#search-btn {
+    margin: 10px;
+    cursor: pointer;
+    padding: 10px;
+  }
+
+.login-btn{
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+
+/* filter */
+
+.filter-btn{
+    margin: 10px 10px 10px 50px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Restaurant card */
+.restaurant-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.res-card{   
+    background-color: rgb(245, 245, 245);
+    width: 250px;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.res-card > img{
+    padding-top: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.description{
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.description > h2{
+    margin-bottom: 10px;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.description > p {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .res-card:hover{
-    border: 1px solid lightgray;
+    border: 1px solid black;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.res-logo{
-    width: 100%;
-    border-radius: 14px;    
-}
-.restaurant-container{
+
+
+/* Shimmer */
+.shimmer-container {
+    margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
-}
-.filter-btn{
+    justify-content: space-evenly;
+  }
+  .shimmer-card {
     margin: 10px;
-    cursor: pointer;
-}
-.shimmer-card{
-    margin: 20px;
-    width: 200px;
-    height: 400px;
+    padding: 10px;
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
     background-color: #f0f0f0;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+
+/* Restaurant menu card */
+
+.restaurant-menu{
+    margin: 0 auto;
+}
+
+.restaurant-card{
+    margin: 0 auto;
+    display: flex;
+    width: 750px;
+    height: 200px;
+    padding: 10px;
+    background-color: azure;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.restaurant-card #res-image{
+    width: 100%;
+    height: 100%;
+}
+
+.restaurant-card > .res-info{
+    padding: 20px;
+}
+
+/* res-items */
+
+.res-item{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    width: 750px;
+    padding: 10px;
+    background-color: azure;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
-.shimmer-container{
-    display: flex;
-    flex-wrap: wrap;
-}
-.login-btn{
 
-    padding: 0 8px;
-    cursor: pointer;
-}
-.filter{
+.item-li{
+    height: 150px;
     display: flex;
+    flex-direction: row;
+    margin: 10px 5px;
+}
+.res-item >li{
+    list-style: none;
+}
+
+.res-item > li > .item-img{
+    width: 50%;
+    height: auto;
+}
+
+.res-item > li > .item-img > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.res-item-details{
+    padding: 8px;
+    width: 100%;
+    overflow: hidden;
+}
+.item-rating{
+    margin: 5px 0;
+}
+
+.item-description{
+    font-size: 12px;
+    padding: 5px 0;
 }
