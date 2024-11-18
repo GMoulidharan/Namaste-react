@@ -18,7 +18,9 @@ class About extends React.Component{
             <div>
                 <h1>About class Component</h1>
                 <h2>Hello world</h2>
-                <UserClass name={"Mouli"} location={"Rasipuram"}/>
+                <UserClass name={"First"} location={"Rasipuram"}/>
+                <UserClass name={"Second"} location={"US"}/>
+                <UserClass name={"Third"} location={"UK"}/>
             </div>
         );
     };
@@ -37,3 +39,20 @@ const About =() =>{
 };
 */
 export default About;
+
+/*
+-Parent constructor
+-Parent render
+    -First Constructor
+    -First Render
+
+    -Second Constructor
+    -Second Render
+
+    <DOM UPDATED -IN SINGLE BATCH>
+
+    -First CDM
+    -Second CDM
+
+-Parent CDM
+*/
