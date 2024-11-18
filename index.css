@@ -237,3 +237,11 @@
     font-size: 12px;
     padding: 5px 0;
 }
+
+
+/* About */
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}
