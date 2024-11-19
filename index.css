@@ -242,6 +242,10 @@
 /* About */
 
 .user-card{
+    margin: 20px;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid salmon;
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
 }
