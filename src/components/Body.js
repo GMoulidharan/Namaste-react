@@ -2,7 +2,7 @@ import RestaurantCard from './RestaurantCard';
 import { useState, useEffect } from "react";
 import Shimmer from './Shimmer';
 import { SWIGGY_API } from '../utils/constants';
-
+import useOnlineStatus from '../utils/useOnlineStatus';
 const Body = () =>{
     //Local State variable - Super powerful variable-For this we use Hook which is known as use state.  
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
@@ -28,6 +28,15 @@ const Body = () =>{
         );
     }
 
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false){ 
+        return(
+            <h1>
+                Looks like you're offline!! Please check your internet connection.
+            </h1>
+        );
+    }
     //conditional rendering
     
     
