@@ -3,31 +3,13 @@ import { useState, useEffect } from "react";
 import Shimmer from './Shimmer';
 import { SWIGGY_API } from '../utils/constants';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import useSwiggyApi from '../utils/useSwiggyApi';
 const Body = () =>{
-    //Local State variable - Super powerful variable-For this we use Hook which is known as use state.  
-    const [listOfRestaurant, setListOfRestaurant] = useState([]);
-    const [filteredRestaurant,setFilteredRestaurant] = useState([]);
-
+    
+    const{listOfRestaurant, filteredRestaurant} = useSwiggyApi();
     const[searchText,setSearchText] = useState("");
     
-    //Whenever a state variable update,react tiggers a reconsiliation cycle(re-renders the components)
-    console.log("body rendered");
-
-    useEffect(() =>{
-        console.log("useEffect called");
-        fetchData();
-    },[]);
     
-    const fetchData =async () =>{
-        const data =await fetch(SWIGGY_API);
-
-        const json = await data.json();
-        //Optional chaining
-        setListOfRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-        );
-    }
-
     const onlineStatus = useOnlineStatus();
 
     if(onlineStatus === false){ 
