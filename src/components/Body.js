@@ -24,32 +24,34 @@ const Body = () =>{
     
     return listOfRestaurant.length === 0 ?(<Shimmer />):(
     <>             
-        <div className="filter">            
-            <input 
-                type='text'                  name='search-box' 
-                className="search-box"
-                value={searchText}
-                onChange={(event) =>{
-                    setSearchText(event.target.value)
-                }}
-            />
-            <button 
-                id="search-btn"
-                onClick={() =>{
-                console.log(searchText);
-                const filteredRestaurant = listOfRestaurant.filter((res) =>{
-                    return res.info.name.toLowerCase().includes(searchText.toLowerCase());
-                });
+        <div className="filter flex">  
+            <div className="m-4 p-4">          
+                <input 
+                    type='text'                  name='search-box' 
+                    className="shadow-lg border"
+                    value={searchText}
+                    onChange={(event) =>{
+                        setSearchText(event.target.value)
+                    }}
+                />
+                <button className="m-2 px-2 py-1 bg-green-200  rounded-md"
+                    id="search-btn"
+                    onClick={() =>{
+                    console.log(searchText);
+                    const filteredRestaurant = listOfRestaurant.filter((res) =>{
+                        return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+                    });
 
-                setFilteredRestaurant(filteredRestaurant);
+                    setFilteredRestaurant(filteredRestaurant);
 
-                }}
-                >
-                    Search
+                    }}
+                    >
+                        Search
                 </button>
-            
+            </div>
+            <div className="m-4 -p-4 flex items-center">
                 <button 
-                    className='filter-btn' 
+                    className="m-2 px-2 py-1 bg-green-200 rounded-md" 
                     onClick={()=>{
                     //Filter  logic here                    
                     let filteredList = listOfRestaurant.filter((res) => res.info.avgRating > 4.2);
@@ -58,8 +60,9 @@ const Body = () =>{
                 >
                     Top Rated restaurant
                 </button>
+            </div>
         </div>
-        <div className='restaurant-container'>
+        <div className='restaurant-container flex flex-wrap m-4 p-4 justify-evenly bg-orange-100 shadow-sm rounded-lg'>
             {
                filteredRestaurant.map((restaurant) =>{
                 console.log(restaurant);

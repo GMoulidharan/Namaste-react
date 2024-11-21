@@ -7,45 +7,49 @@ const Header = () => {
     const [loginBtn, setLoginBtn] = useState("Login");
     const onlineStatus = useOnlineStatus();
     return (
-        <div className="header">
+        <div className="flex justify-between items-center bg-orange-100 mb-2 shadow-lg max-h-16 sticky top-0">
             <div className="logo-container">
-                <img className='logo' src={LOGO_URL}></img>
+                <img
+                    className='w-14 m-2 rounded-full'
+                    src={LOGO_URL}></img>
             </div>
-            <h2>Cut & Craft</h2>
-            <ul>
-                <li>
-                    Online Status:{onlineStatus? "✅" : "🔴"}
+            <h2 className="text-3xl font-bold">Cut & Craft</h2>
+
+            <ul className="flex p-4 m-4 text-xl font-semibold items-center">
+                <li className="px-2">
+                    Online Status:{onlineStatus ? "✅" : "🔴"}
                 </li>
                 <Link
                     to="/"
                     className="link"
                 >
-                    <li>Home</li>
+                    <li className="px-2">Home</li>
                 </Link>
                 <Link
                     to="/about"
                     className="link"
                 >
-                    <li>About</li>
+                    <li className="px-2">About</li>
                 </Link>
                 <Link
                     to="/contact"
                     className="link"
                 >
-                    <li>Contact</li>
+                    <li className="px-2">Contact</li>
                 </Link>
                 <Link
                     to="/grocery"
                     className="link"
                 >
-                    <li>Grocery</li>
+                    <li className="px-2">Grocery</li>
                 </Link>
-                <li>Cart</li>
-                <button onClick={() => {
+                <li className="px-2">Cart</li>
+                <button 
+                    onClick={() => {
                     loginBtn === "Login"
                         ? setLoginBtn("Logout")
                         : setLoginBtn("Login");
-                }} className="login-btn">{loginBtn}</button>
+                }} className="px-3 py-1 rounded-lg bg-red-300">{loginBtn}</button>
             </ul>
 
         </div>

@@ -16,40 +16,42 @@ const RestaurantMenu= () =>{
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
     console.log(itemCards);
     return  (
-        <div className="restaurant-menu">
-            <div className="restaurant-card">
+        <div className="m-40">
+            <div className="flex m-2 p-4 bg-orange-200 shadow-lg">
                 <div>
                     <img
+                        className="w-48 h-48"
                         id="res-image"
                         src={CDN_URL +cloudinaryImageId }
                         alt={name}
                     >
                     </img>
                 </div>
-                <div className="res-info">
-                    <h1>{name}</h1>
-                    <p>{costForTwoMessage}</p>
+                <div className="m-4 p-4">
+                    <h1 className="text-4xl font-bold">{name}</h1>
+                    <p className="text-xl font-semibold">{costForTwoMessage}</p>
+                    <p className="text-xl font-semibold">{cuisines.join(", ")}</p>
                     <p>{avgRatingString}</p>
-                    <p>{cuisines.join(", ")}</p>
                 </div>
             </div>
 
-            <div className="res-item">
+            <div className="m-4 p-8 border flex flex-col items-center rounded-md">
                 {itemCards.map((item, index) =>(
                     <li
-                        className="item-li"
+                        className="flex justify-between m-4 p-4 border shadow-md bg-orange-100 min-w-full max-w-60 overflow-hidden rounded-md"
                         key={index}
                     >
-                        <div className="res-item-details">
-                            <h3>{item.card.info.name}</h3>
+                        <div className="p-4">
+                            <h3 className="text-lg font-medium">{item.card.info.name}</h3>
                             <p className="item-header item rating">
                                 {item.card.info.ratings.aggregatedRating.rating}
                             </p>
-                            <p className="item-header item-description">
+                            <p className="max-w-lg">
                                 {item.card.info.description}
                             </p>
                         </div>
-                        <div className="item-img">
+                        <div 
+                        className="w-48 h-48 object-cover">
                             <img
                                 src={CDN_URL + item.card.info.imageId}
                                 alt={item.card.info.name}
