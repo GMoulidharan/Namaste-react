@@ -25,4 +25,21 @@ const RestaurantCard = ({name,cloudinaryImageId,cuisines,avgRating,id}) =>{
     );
 };
 
+//Higher order component - Takes restaurant card as input , return me a new component , enhanced res card.
+//Input =  Restaurant card
+//Output = RestaurantCard ==> ResaturantCardPromoted
+
+//This HOC will generate a RestaurantCard for us 
+
+export const withDiscountOffer = (RestaurantCard) =>{
+    return (props) =>{
+        return (
+            <div>
+                <div className="absolute m-2 p-2 bg-green-200 text-green-900 font-extrabold  leading-5 rounded-lg">{props.aggregatedDiscountInfoV3.header}  {props.aggregatedDiscountInfoV3.subHeader}</div>
+                
+                <RestaurantCard {...props}/>
+            </div>
+        );
+    };
+};
 export default RestaurantCard;

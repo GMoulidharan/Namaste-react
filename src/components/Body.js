@@ -1,16 +1,18 @@
-import RestaurantCard from './RestaurantCard';
-import { useState, useEffect } from "react";
+import RestaurantCard, {withDiscountOffer}from './RestaurantCard';
+import { useState } from "react";
 import Shimmer from './Shimmer';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import useSwiggyApi from '../utils/useSwiggyApi';
+
 const Body = () => {
 
     const { restaurantListData, isLoading, error } = useSwiggyApi();
     const [searchText, setSearchText] = useState("");
     const [filteredData, setFilteredData] = useState([]);//Define state var for filtered data
 
+    const DiscountedRestaurantCard = withDiscountOffer(RestaurantCard);
 
-      
+     console.log(restaurantListData); 
     const onlineStatus = useOnlineStatus();
 
     if (onlineStatus === false) {
@@ -62,30 +64,38 @@ const Body = () => {
             </button>
             <button
               className="m-2 px-2 py-1 bg-green-200 rounded-md"
-              onClick={handleTopRestaurant}
+              onClick={handleTopRestaurant} 
             >
               Top Rated Restaurant
             </button>
           </div>
+
           <div className="flex m-4 p-4 flex-wrap justify-evenly bg-orange-100 shadow-sm rounded-lg">
-            {searchText.length > 0 && filteredData.length > 0 ? (//If the user is searching (searchText) and results (filteredData) exist: Show the filtered list
+            {filteredData.length > 0 ? (
               filteredData.map((restaurant) => (
                 <RestaurantCard
                   {...restaurant.info}
                   key={restaurant.info.id}
                 />
               ))
-            ) : restaurantListData.length === 0 ? (//Else, if the full list (restaurantListData) is empty
-              <p>No restaurants found.</p>
-            ) : (
-              restaurantListData.map((restaurant) => (//Otherwise Show the complete list of restaurants 
-              
+            ) : searchText.length == 0? (
+              restaurantListData.map((restaurant) =>
+                restaurant.info.aggregatedDiscountInfoV3 ?(
+                  <DiscountedRestaurantCard 
+                    {...restaurant.info}
+                    key={restaurant.info.id}
+                  />
+              ):( 
                 <RestaurantCard
                   {...restaurant.info}
                   key={restaurant.info.id}
                 />
-              ))
-            )}
+              )
+            )
+          ):(
+            <P>No Restaurant found</P>
+          )
+        }
           </div>
         </div>
       )}
