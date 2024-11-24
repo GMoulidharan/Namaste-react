@@ -24,7 +24,6 @@ const useSwiggyApi =() =>{
 
         fetchData();
     },[]);
-    console.log(restaurantListData);
     return {restaurantListData, isLoading, error};
 }
 

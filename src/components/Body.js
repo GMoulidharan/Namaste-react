@@ -1,9 +1,9 @@
 import RestaurantCard, {withDiscountOffer}from './RestaurantCard';
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Shimmer from './Shimmer';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import useSwiggyApi from '../utils/useSwiggyApi';
-
+import UserContext from '../utils/UserContext';
 const Body = () => {
 
     const { restaurantListData, isLoading, error } = useSwiggyApi();
@@ -12,7 +12,7 @@ const Body = () => {
 
     const DiscountedRestaurantCard = withDiscountOffer(RestaurantCard);
 
-     console.log(restaurantListData); 
+     
     const onlineStatus = useOnlineStatus();
 
     if (onlineStatus === false) {
@@ -38,6 +38,7 @@ const Body = () => {
         setFilteredData(filteredTopResults);
     };
 
+    const {loggedInUser,setUserName} = useContext(UserContext);
 
     return (
         <>
@@ -68,8 +69,15 @@ const Body = () => {
             >
               Top Rated Restaurant
             </button>
-          </div>
 
+              <span className='m-4'>
+              <label>User Name: </label>
+              <input className='border border-black px-2' 
+              value={loggedInUser}
+              onChange={(e) =>setUserName(e.target.value)}></input>
+              </span>
+          </div>
+          
           <div className="flex m-4 p-4 flex-wrap justify-evenly bg-orange-100 shadow-sm rounded-lg">
             {filteredData.length > 0 ? (
               filteredData.map((restaurant) => (
