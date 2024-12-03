@@ -3,13 +3,19 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 const Header = () => {
 
     const [loginBtn, setLoginBtn] = useState("Login");
     const onlineStatus = useOnlineStatus();
 
     const {loggedInUser} = useContext(UserContext);
-    console.log(loggedInUser);
+    // console.log(loggedInUser);
+
+    //subscribing to the store using a selector
+    const cartItems = useSelector((store) => store.cart.items);
+    console.log(cartItems);
+
 
     return (
         <div className="flex justify-between items-center bg-orange-100 mb-2 shadow-lg max-h-16">
@@ -28,27 +34,33 @@ const Header = () => {
                     to="/"
                     className="link"
                 >
-                    <li className="px-2">Home</li>
+                    <li className="px-3">Home</li>
                 </Link>
                 <Link
                     to="/about"
                     className="link"
                 >
-                    <li className="px-2">About</li>
+                    <li className="px-3">About</li>
                 </Link>
                 <Link
                     to="/contact"
                     className="link"
                 >
-                    <li className="px-2">Contact</li>
+                    <li className="px-3">Contact</li>
                 </Link>
                 <Link
                     to="/grocery"
                     className="link"
                 >
-                    <li className="px-2">Grocery</li>
+                    <li className="px-3">Grocery</li>
                 </Link>
-                <li className="px-2">Cart</li>
+                <Link
+                    to="/cart"
+                    className="link"
+                >
+                <li className="px-4 font-bold text-xl">
+                    Cart-({cartItems.length})</li>
+                </Link>
                 <button 
                     onClick={() => {
                     loginBtn === "Login"

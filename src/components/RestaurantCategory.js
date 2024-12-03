@@ -1,7 +1,7 @@
 import ItemList from "./ItemList";
 
 const RestaurantCategory = ({data, showItem, updateIndex}) =>{
-    console.log(showItem);
+    // console.log(showItem);
 
     const handleShowItems =() =>{
         updateIndex();// Calls the `updateActiveIndex` method from RestaurantMenu(setShowIndex)
