@@ -77,3 +77,15 @@ import {Component} from "path"
     -Create a slice(cart slice)
     -dispatch(action)
     -Selector
+
+# Types of testing(devloper)
+    -Unit Testing
+    -Integration Testing
+    -End to End Testing - e2e Testing
+
+# Setting up Testing in our app
+    -Install React Testing Library
+    -Install jest
+    -Installed Babel dependencies(jest)
+    -Configure Babel
+    -Configure Parcel config file to disable default babel transpliation

@@ -8,7 +8,7 @@ const Body = () => {
 
     const { restaurantListData, isLoading, error } = useSwiggyApi();
     const [searchText, setSearchText] = useState("");
-    const [filteredData, setFilteredData] = useState([]);//Define state var for filtered data
+    const [filteredData, setFilteredData] = useState(restaurantListData || []);//Define state var for filtered data
 
     const DiscountedRestaurantCard = withDiscountOffer(RestaurantCard);
 
@@ -101,7 +101,7 @@ const Body = () => {
               )
             )
           ):(
-            <P>No Restaurant found</P>
+            <p>No Restaurant found</p>
           )
         }
           </div>
