@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { CDN_URL } from "../utils/constants";
 
-const RestaurantCard = ({name,cloudinaryImageId,cuisines,avgRating,id}) =>{
-    
+const RestaurantCard = (resData) =>{
+    // console.log(resData);
+    const {name,cloudinaryImageId,cuisines,avgRating,id} = resData;
     return(
         <Link
             to={"/restaurants/" +id}
@@ -16,7 +17,7 @@ const RestaurantCard = ({name,cloudinaryImageId,cuisines,avgRating,id}) =>{
                 />
                 <div className="mt-4 w-48 h-44 items-start truncate">
                     <h2 className="font-bold text-lg text-ellipsis">{name}</h2>
-                    <p className="mt-4 text-ellipsis">{cuisines.join(", ")}</p>
+                    <p className="mt-4 text-ellipsis">{Array.isArray(cuisines) ? cuisines.join(", ") : "N/A"}</p>
                     <p className="mt-4 text-ellipsis">{avgRating}</p>
                 </div>
             </div>
