@@ -9,7 +9,7 @@ const RestaurantCard = (resData) =>{
             to={"/restaurants/" +id}
             key={id}
         >
-            <div className="m-2 p-4 bg-white w-60   min-h-60 flex flex-col items-center rounded-xl shadow-sm hover:scale-105 hover:bg-gray-100">
+            <div data-testid = "resCard" className="m-2 p-4 bg-white w-60   min-h-60 flex flex-col items-center rounded-xl shadow-sm hover:scale-105 hover:bg-gray-100">
                 <img
                     className="rounded-lg w-[200px] h-[200px]"
                     src={CDN_URL+cloudinaryImageId}

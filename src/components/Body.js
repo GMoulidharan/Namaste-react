@@ -34,7 +34,7 @@ const Body = () => {
 
     const handleTopRestaurant = () => {
         const filteredTopResults = restaurantListData.filter((res) => res.info.avgRating > 4.2);
-        console.log("Top Rated Filtered Results: ", filteredTopResults);
+        // console.log("Top Rated Filtered Results: ", filteredTopResults);
         setFilteredData(filteredTopResults);
     };
 
@@ -51,6 +51,7 @@ const Body = () => {
           <div className="m-4">
             <input
               type="text"
+              data-testid = "searchInput"
               name="search-box"
               className="shadow-lg border"
               value={searchText}
