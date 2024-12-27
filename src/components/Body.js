@@ -58,7 +58,7 @@ const Body = () => {
               onChange={(e) => setSearchText(e.target.value)}
             />
             <button
-              className="m-2 px-2 py-1 bg-blue-200 rounded-md"
+              className="m-2 px-2 py-1 bg-blue-200 rounded-md "
               id="search-btn"
               onClick={handleSearch}
             >
@@ -71,7 +71,7 @@ const Body = () => {
               Top Rated Restaurant
             </button>
 
-              <span className='m-4'>
+              <span className='m-4 hidden md:inline-block'>
               <label>User Name: </label>
               <input className='border border-black px-2' 
               value={loggedInUser}

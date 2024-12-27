@@ -31,11 +31,11 @@ const RestaurantMenu = () => {
     }
 
     return (
-        <div className="m-32">
-            <div className="flex m-2 p-4 bg-orange-200 shadow-lg">
+        <div className="lg:m-32 md:m-16 m-8">
+            <div className="flex flex-wrap items-center m-2 p-2 lg:p-4 bg-orange-200 shadow-lg rounded-lg">
                 <div>
                     <img
-                        className="w-48 h-48"
+                        className="lg:w-48 lg:h-48 md:w-36 md:h-36 w-24 h-24 rounded-md"
                         id="res-image"
                         src={CDN_URL + cloudinaryImageId}
                         alt={name}
@@ -43,7 +43,7 @@ const RestaurantMenu = () => {
                     </img>
                 </div>
                 <div className="m-4 p-4">
-                    <h1 className="text-4xl font-bold">{name}</h1>
+                    <h1 className="lg:text-4xl md:text-2xl text-xl font-bold">{name}</h1>
                     <p className="text-xl font-semibold">{costForTwoMessage}</p>
                     <p className="text-xl font-semibold">{cuisines.join(", ")}</p>
                     <p>{avgRatingString}</p>
