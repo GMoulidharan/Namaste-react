@@ -27,7 +27,7 @@ const Header = () => {
                 alt="Logo"
             />
             <h2 className="text-lg sm:text-2xl md:text-3xl font-bold ml-3">
-                Savory Symphony
+                FreshlyFetch
             </h2>
         </div>
 
