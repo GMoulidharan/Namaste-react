@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "This is Namaste React bu Akshay saini",
   "scripts": {
-    "start": "parcel index.html",
+    "start": "node server.js",
+    "dev": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest",
     "watch-test": "jest --watch"
-  },
+},
   "repository": {
     "type": "git",
     "url": "(https://github.com/GMoulidharan/Namaste-react.git)"
@@ -33,6 +34,8 @@
     "@babel/preset-react": "^7.26.3",
     "@reduxjs/toolkit": "^2.3.0",
     "D": "^1.0.0",
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^3.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
